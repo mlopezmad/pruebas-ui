@@ -121,16 +121,20 @@ h1 {
 }
 
 .section-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .section-title h2 {
   margin: 0;
   font-size: 32px;
   font-weight: 900;
+}
+
+.acciones {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 22px 0;
 }
 
 button {
@@ -147,6 +151,23 @@ button {
 }
 
 button:active {
+  transform: scale(0.98);
+}
+
+.historial-btn {
+  appearance: none;
+  text-decoration: none;
+  border-radius: 999px;
+  background: rgba(227, 6, 19, 0.10);
+  color: var(--red);
+  padding: 14px 22px;
+  font-size: 18px;
+  font-weight: 800;
+  border: 1px solid rgba(227, 6, 19, 0.18);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.historial-btn:active {
   transform: scale(0.98);
 }
 
@@ -207,25 +228,15 @@ button:active {
 }
 
 .qr-image {
-
   width: 220px;
-
   height: auto;
-
   max-width: 100%;
-
   display: block;
-
   margin: 0 auto;
-
   border-radius: 24px;
-
   background: white;
-
   padding: 14px;
-
   box-shadow: var(--shadow);
-
   object-fit: contain;
 }
 
@@ -235,6 +246,19 @@ button:active {
   font-size: 16px;
   line-height: 1.5;
 }
+
+/* CONTACTO */
+
+.mini-contacto {
+  margin: 24px 0 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* MOVIL */
 
 @media (max-width: 700px) {
   .mahou-logo {
@@ -253,7 +277,13 @@ button:active {
     font-size: 18px;
   }
 
-  button {
+  .acciones {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  button,
+  .historial-btn {
     font-size: 16px;
     padding: 12px 20px;
   }
@@ -287,59 +317,10 @@ button:active {
     border: 2px solid rgba(227, 6, 19, 0.20);
   }
 
-    button {
+  button {
     box-shadow: 0 8px 24px rgba(227,6,19,0.40);
   }
-}
 
-/* CONTACTO */
-
-.mini-contacto {
-  margin: 24px 0 0 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
-  opacity: 0.9;
-}
-
-/* BOTONES ACCIONES */
-
-.acciones {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.historial-btn {
-  appearance: none;
-  text-decoration: none;
-  border-radius: 999px;
-  background: rgba(227, 6, 19, 0.10);
-  color: var(--red);
-  padding: 14px 20px;
-  font-size: 18px;
-  font-weight: 800;
-  border: 1px solid rgba(227, 6, 19, 0.18);
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.historial-btn:active {
-  transform: scale(0.98);
-}
-
-@media (max-width: 700px) {
-  .acciones {
-    gap: 8px;
-  }
-
-  .historial-btn {
-    font-size: 16px;
-    padding: 12px 18px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
   .historial-btn {
     background: rgba(227, 6, 19, 0.16);
     color: #ff5b63;
