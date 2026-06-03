@@ -1,0 +1,97 @@
+{
+  "dias": {
+    "2026-05-29": {
+      "primeros": [
+        "Arroz negro con sepia",
+        "Crema de calabacín",
+        "Ensalada de temporada"
+      ],
+      "segundos": [
+        "Pechuga de pollo plancha",
+        "Callos a la madrileña",
+        "Caella plancha"
+      ],
+      "dieta": [
+        "Primero de dieta",
+        "Carne plancha",
+        "Pescado plancha"
+      ]
+    },
+
+    "2026-06-01": {
+      "primeros": [
+        "Lentejas castellanas",
+        "Menestra de verduras",
+        "Ensalada de temporada"
+      ],
+      "segundos": [
+        "Pizza italiana",
+        "Contra de ternera asada",
+        "Merluza al horno con verduras asadas"
+      ],
+      "dieta": [
+        "Primero de dieta",
+        "Carne plancha",
+        "Pescado plancha"
+      ]
+    },
+
+    "2026-06-02": {
+      "primeros": [
+        "Guisantes rehogados",
+        "Raviolis de carne con salsa de queso",
+        "Ensalada de tomate aliñado"
+      ],
+      "segundos": [
+        "Chuletas de pavo al ajillo",
+        "Albóndigas a la jardinera",
+        "Bacalao Orly"
+      ],
+      "dieta": [
+        "Primero de dieta",
+        "Carne plancha",
+        "Pescado plancha"
+      ]
+    },
+
+    "2026-06-03": {
+      "primeros": [
+        "Sopa de picadillo",
+        "Huevos revueltos con morcilla",
+        "Ensalada mixta"
+      ],
+      "segundos": [
+        "Secreto a la plancha con salsa de pimienta",
+        "Ternera con setas",
+        "Dorada a la espalda"
+      ],
+      "dieta": [
+        "Primero de dieta",
+        "Carne plancha",
+        "Pescado plancha"
+      ]
+    },
+
+    "2026-06-04": {
+      "primeros": [
+        "Fideuá a la marinera",
+        "Crema de verduras",
+        "Ensaladilla alemana"
+      ],
+      "segundos": [
+        "Salchicha bratwurst con pure de patatas",
+        "Filete de cerdo a la plancha",
+        "Atún a la plancha"
+      ],
+      "dieta": [
+        "Primero de dieta",
+        "Carne plancha",
+        "Pescado plancha"
+      ]
+    },
+
+    "2026-06-05": {
+      "festivo": true
+    }
+  }
+}
