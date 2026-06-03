@@ -307,4 +307,65 @@ button:active {
   line-height: 1.5;
 
   opacity: 0.9;
+  /* BOTONES ACCIONES */
+
+.acciones {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.historial-btn {
+  appearance: none;
+
+  text-decoration: none;
+
+  border-radius: 999px;
+
+  background: rgba(227, 6, 19, 0.10);
+
+  color: var(--red);
+
+  padding: 14px 20px;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  border: 1px solid rgba(227, 6, 19, 0.18);
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.historial-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 700px) {
+
+  .acciones {
+    gap: 8px;
+  }
+
+  .historial-btn {
+
+    font-size: 16px;
+
+    padding: 12px 18px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .historial-btn {
+
+    background: rgba(227, 6, 19, 0.16);
+
+    color: #ff5b63;
+
+    border: 1px solid rgba(227, 6, 19, 0.25);
+  }
+}
 }
