@@ -258,6 +258,43 @@ button:active {
   opacity: 0.9;
 }
 
+/* HISTORIAL */
+
+.volver-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: rgba(227, 6, 19, 0.10);
+  color: var(--red);
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(227, 6, 19, 0.18);
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.historial-selector {
+  margin-top: 20px;
+}
+
+.historial-selector label {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.historial-selector select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(227, 6, 19, 0.15);
+  background: white;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+
 /* MOVIL */
 
 @media (max-width: 700px) {
@@ -287,15 +324,14 @@ button:active {
     font-size: 16px;
     padding: 12px 20px;
   }
+
+  .volver-btn {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
 }
 
 /* MODO OSCURO */
-
-.volver-btn {
-  background: rgba(227, 6, 19, 0.16);
-  color: #ff5b63;
-  border: 1px solid rgba(227, 6, 19, 0.25);
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -327,69 +363,16 @@ button:active {
     box-shadow: 0 8px 24px rgba(227,6,19,0.40);
   }
 
-  .historial-btn {
+  .historial-btn,
+  .volver-btn {
     background: rgba(227, 6, 19, 0.16);
     color: #ff5b63;
     border: 1px solid rgba(227, 6, 19, 0.25);
   }
-}
-
-/* HISTORIAL */
-
-.volver-btn {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--red);
-  font-size: 18px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-
-.historial-selector {
-  margin-top: 20px;
-}
-
-.historial-selector label {
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.historial-selector select {
-  width: 100%;
-  padding: 14px;
-  border-radius: 14px;
-  border: 1px solid rgba(227, 6, 19, 0.15);
-  background: white;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--text);
-}
-
-@media (prefers-color-scheme: dark) {
 
   .historial-selector select {
     background: #1c1c1e;
     color: white;
     border: 1px solid rgba(255,255,255,0.08);
   }
-
-.volver-btn {
-  display: inline-block;
-  text-decoration: none;
-
-  background: rgba(227, 6, 19, 0.10);
-  color: var(--red);
-
-  padding: 12px 20px;
-
-  border-radius: 999px;
-
-  border: 1px solid rgba(227, 6, 19, 0.18);
-
-  font-size: 16px;
-  font-weight: 800;
-
-  margin-bottom: 24px;
 }
