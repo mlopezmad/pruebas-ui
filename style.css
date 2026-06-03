@@ -326,7 +326,9 @@ button:active {
     color: #ff5b63;
     border: 1px solid rgba(227, 6, 19, 0.25);
   }
-  /* HISTORIAL */
+}
+
+/* HISTORIAL */
 
 .volver-btn {
   display: inline-block;
@@ -370,5 +372,4 @@ button:active {
   .volver-btn {
     color: #ff5b63;
   }
-}
 }
