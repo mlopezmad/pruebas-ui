@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Buscar platos</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="app">
+
+    <a href="index.html" class="volver-btn">
+      ← Volver al menú
+    </a>
+
+    <p class="eyebrow">
+      BUSCADOR
+    </p>
+
+    <h1>Buscar platos</h1>
+
+    <div class="card historial-selector">
+
+      <label for="busqueda">
+        Nombre del plato
+      </label>
+
+      <input
+        id="busqueda"
+        type="text"
+        placeholder="Ej: lentejas, fideuá, pizza..."
+      >
+
+    </div>
+
+    <div id="resultados" class="week-list"></div>
+
+  </main>
+
+  <script src="buscar.js"></script>
+
+</body>
+</html>
