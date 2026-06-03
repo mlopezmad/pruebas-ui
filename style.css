@@ -291,6 +291,12 @@ button:active {
 
 /* MODO OSCURO */
 
+.volver-btn {
+  background: rgba(227, 6, 19, 0.16);
+  color: #ff5b63;
+  border: 1px solid rgba(227, 6, 19, 0.25);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #111111;
@@ -369,7 +375,21 @@ button:active {
     border: 1px solid rgba(255,255,255,0.08);
   }
 
-  .volver-btn {
-    color: #ff5b63;
-  }
+.volver-btn {
+  display: inline-block;
+  text-decoration: none;
+
+  background: rgba(227, 6, 19, 0.10);
+  color: var(--red);
+
+  padding: 12px 20px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(227, 6, 19, 0.18);
+
+  font-size: 16px;
+  font-weight: 800;
+
+  margin-bottom: 24px;
 }
