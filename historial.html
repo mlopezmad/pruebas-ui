@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+
+  <meta name="theme-color" content="#111111" />
+
+  <title>Historial de menús</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section class="hero">
+
+      <a href="index.html" class="volver-btn">
+        ← Volver al menú
+      </a>
+
+      <p class="eyebrow">
+        Historial
+      </p>
+
+      <h1>Menús anteriores</h1>
+
+      <div class="card historial-selector">
+
+        <label for="selector-semana">
+          Selecciona una semana
+        </label>
+
+        <select id="selector-semana">
+          <option value="">
+            Cargando semanas…
+          </option>
+        </select>
+
+      </div>
+
+    </section>
+
+    <section class="week">
+
+      <div id="historial-contenido" class="week-list">
+        <div class="card">
+          Cargando historial…
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="historial.js"></script>
+
+</body>
+</html>
