@@ -192,8 +192,10 @@ async function cargarMenu() {
     const principal = obtenerMenuPrincipal(datos);
 
     if (principal.tipo === "mañana") {
+      $("fecha").textContent = `Hoy es ${fechaBonita()}`;
       $("dia").textContent = `Menú de mañana · ${formatearFecha(principal.fecha)}`;
     } else {
+      $("fecha").textContent = fechaBonita();
       $("dia").textContent = `Menú de hoy · ${formatearFecha(principal.fecha)}`;
     }
 
