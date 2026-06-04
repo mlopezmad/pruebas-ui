@@ -3,13 +3,14 @@ const MENU_URL = "menu.json";
 const GITHUB_COMMITS_URL =
   "https://api.github.com/repos/mlopezmad/Menu-comedor/commits?path=menu.json&per_page=1";
 
+const HORA_CAMBIO_MANANA = 16;
+
 const $ = (id) => document.getElementById(id);
 
 function fechaClave(fecha) {
   const year = fecha.getFullYear();
   const month = String(fecha.getMonth() + 1).padStart(2, "0");
   const day = String(fecha.getDate()).padStart(2, "0");
-
   return `${year}-${month}-${day}`;
 }
 
@@ -46,7 +47,6 @@ function pintarFecha() {
 
 async function cargarFechaActualizacion() {
   const actualizado = $("actualizado");
-
   if (!actualizado) return;
 
   try {
@@ -54,9 +54,7 @@ async function cargarFechaActualizacion() {
       cache: "no-store"
     });
 
-    if (!respuesta.ok) {
-      throw new Error("No se pudo consultar GitHub");
-    }
+    if (!respuesta.ok) throw new Error("No se pudo consultar GitHub");
 
     const datos = await respuesta.json();
 
@@ -98,25 +96,22 @@ function pintarBloque(menu) {
   `;
 }
 
-function mensajeSinMenu(fecha, menuHoy) {
+function mensajeSinMenu(fecha, menu) {
   if (esFinDeSemana(fecha)) {
-    return "🍴 El comedor permanece cerrado hoy.";
+    return "🍴 El comedor permanece cerrado ese día.";
   }
 
-  if (menuHoy && menuHoy.festivo) {
-    return "🎉 Hoy es festivo. No hay servicio de comedor.";
+  if (menu && menu.festivo) {
+    return "🎉 Es festivo. No hay servicio de comedor.";
   }
 
-  return "⚠️ El menú de hoy no está cargado.";
+  return "⚠️ El menú no está cargado.";
 }
 
-function proximosDias(datos) {
-  const resultado = [];
-  const hoy = new Date();
-
-  for (let i = 1; i <= 7; i++) {
-    const fecha = new Date(hoy);
-    fecha.setDate(hoy.getDate() + i);
+function buscarSiguienteDiaConMenu(datos, desdeFecha, incluirDesde = false) {
+  for (let i = incluirDesde ? 0 : 1; i <= 10; i++) {
+    const fecha = new Date(desdeFecha);
+    fecha.setDate(desdeFecha.getDate() + i);
 
     if (esFinDeSemana(fecha)) continue;
 
@@ -126,10 +121,54 @@ function proximosDias(datos) {
     if (!menu) continue;
     if (menu.festivo) continue;
 
-    resultado.push({
-      fecha,
-      menu
-    });
+    return { fecha, menu };
+  }
+
+  return null;
+}
+
+function obtenerMenuPrincipal(datos) {
+  const ahora = new Date();
+  const hora = ahora.getHours();
+
+  if (hora >= HORA_CAMBIO_MANANA) {
+    const siguiente = buscarSiguienteDiaConMenu(datos, ahora, false);
+
+    if (siguiente) {
+      return {
+        tipo: "mañana",
+        fecha: siguiente.fecha,
+        menu: siguiente.menu
+      };
+    }
+  }
+
+  const claveHoy = fechaClave(ahora);
+  const menuHoy = datos.dias?.[claveHoy];
+
+  return {
+    tipo: "hoy",
+    fecha: ahora,
+    menu: menuHoy
+  };
+}
+
+function proximosDias(datos, desdeFecha) {
+  const resultado = [];
+
+  for (let i = 1; i <= 7; i++) {
+    const fecha = new Date(desdeFecha);
+    fecha.setDate(desdeFecha.getDate() + i);
+
+    if (esFinDeSemana(fecha)) continue;
+
+    const clave = fechaClave(fecha);
+    const menu = datos.dias?.[clave];
+
+    if (!menu) continue;
+    if (menu.festivo) continue;
+
+    resultado.push({ fecha, menu });
   }
 
   return resultado;
@@ -150,48 +189,23 @@ async function cargarMenu() {
 
     const datos = await respuesta.json();
 
-    const hoyFecha = new Date();
-    const hoyClave = fechaClave(hoyFecha);
-    const menuHoy = datos.dias?.[hoyClave];
+    const principal = obtenerMenuPrincipal(datos);
 
-    if (!menuHoy || menuHoy.festivo) {
-      $("dia").textContent = fechaBonita();
-      $("contenido-hoy").innerHTML = mensajeSinMenu(hoyFecha, menuHoy);
-
-      const seccionSemana = document.querySelector(".week");
-      const diasFuturos = proximosDias(datos);
-
-      if (diasFuturos.length === 0) {
-        seccionSemana.style.display = "none";
-        return;
-      }
-
-      seccionSemana.style.display = "block";
-
-      const semana = $("semana");
-      semana.innerHTML = "";
-
-      diasFuturos.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "card";
-
-        card.innerHTML = `
-          <h2>${formatearFecha(item.fecha)}</h2>
-          ${pintarBloque(item.menu)}
-        `;
-
-        semana.appendChild(card);
-      });
-
-      return;
+    if (principal.tipo === "mañana") {
+      $("dia").textContent = `Menú de mañana · ${formatearFecha(principal.fecha)}`;
+    } else {
+      $("dia").textContent = `Menú de hoy · ${formatearFecha(principal.fecha)}`;
     }
 
-    $("dia").textContent = fechaBonita();
-    $("contenido-hoy").innerHTML = pintarBloque(menuHoy);
+    if (!principal.menu || principal.menu.festivo) {
+      $("contenido-hoy").innerHTML = mensajeSinMenu(principal.fecha, principal.menu);
+    } else {
+      $("contenido-hoy").innerHTML = pintarBloque(principal.menu);
+    }
 
     const semana = $("semana");
     const seccionSemana = document.querySelector(".week");
-    const diasFuturos = proximosDias(datos);
+    const diasFuturos = proximosDias(datos, principal.fecha);
 
     semana.innerHTML = "";
 
